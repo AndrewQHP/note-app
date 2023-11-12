@@ -44,7 +44,6 @@ export default NoteList = ({}) => {
           client: '',
           contents: '',
         })
-        console.log(notes)
       } catch (error) {
         console.log('failed to save notes')
       }
@@ -82,15 +81,9 @@ export default NoteList = ({}) => {
         </Pressable>
         <Pressable
           style={[styles.button, styles.buttonClose]}
-          onPress={() => {
-            console.log('ind', index)
-            console.log('before', notes)
-            console.log(
-              'after',
-              notes.filter((_note, noteIndex) => noteIndex !== index)
-            )
+          onPress={() =>
             setNotes(notes.filter((_note, noteIndex) => noteIndex !== index))
-          }}
+          }
         >
           <Text style={styles.textStyle}>Delete Note</Text>
         </Pressable>
@@ -155,7 +148,7 @@ export default NoteList = ({}) => {
                 onPress={() => {
                   setNoteModalVisible(!noteModalVisible)
                   const { index, category, client, contents } = note
-                  console.log('note', note)
+
                   if (index === null)
                     setNotes([...notes, { category, client, contents }])
                   else {
